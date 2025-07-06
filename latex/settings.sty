@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%
+% Cleaned-up CV settings.sty (for Tectonic, no biber, no xetex)
+% Johan Tryti – 2025
+
+\RequirePackage{silence}
+\WarningsOff[longtable]
+\WarningsOff[array]
+
+\RequirePackage{graphicx}
+\RequirePackage[hyphens]{url}
+\RequirePackage{babel}
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage[a4paper,nohead,nofoot,hmargin=2.25cm,vmargin=2cm]{geometry}
+\RequirePackage{relsize}
+\RequirePackage[dvipsnames,svgnames]{xcolor}
+\RequirePackage{tikz}
+\RequirePackage{comment}
+\RequirePackage{hyperref}
+\usepackage[document]{ragged2e}
+\usepackage[none]{hyphenat}
+
+\usetikzlibrary{shapes,shadows}
+
+% Custom colors
+\definecolor{SwishLineColour}{HTML}{88AC0B}
+\definecolor{MarkerColour}{HTML}{B6073F}
+
+% Custom commands
+\newcommand{\smallcaps}[1]{\textsc{\lowercase{#1}}}
+\newcommand{\makefield}[2]{\makebox[1.5em]{\color{MarkerColour!80!black}#1} #2\hspace{2em}}
+\newcommand{\prefixmarker}[1]{\def\@prefixmarker{#1}}
+\def\@prefixmarker{\relscale{.9}\faBookmark}
+\newcommand{\makerubrichead}[1]{\vskip\baselineskip\@@rubrichead{#1}}
+
+% Layout tweaks
+\headerscale{1}
+\rubricfont{\Large\bfseries\sffamily}
+\setlength{\rubricspace}{0pt}
+\setlength{\rubricafterspace}{-6pt}
+\setlength{\subrubricspace}{3pt}
+\setlength{\subrubricbeforespace}{4pt}
+\subrubricfont{\large\bfseries\sffamily}
+\subrubricalignment{l}
+\keyalignment{r}
+\rubricalignment{l}
+\renewcommand{\arraystretch}{1.25}
+\urlstyle{tt}
+
+% Fancy rubric heading
+\def\@@rubrichead#1{%
+  \begin{tikzpicture}[baseline]
+    \shade[left color=SwishLineColour!60!white, right color=white] rectangle (\@almosttextwidth,2.5pt);
+    \node[font={\bfseries\@rubricfont},inner sep=0pt,text ragged,anchor=south west,text depth=.5ex,text height=1.5ex] at (1pt,2pt) {#1};
+  \end{tikzpicture}%
+  \vspace\rubricspace%
+}
+
+% ====== HYPERLINK STYLING ======
+% Fix link styling: clean black italic for links, no color bleed
+\usepackage{xurl}
+\usepackage{etoolbox}
+
+% Set all hyperlink colors to black and remove borders
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    pdfborder={0 0 0}
+}
+
+% Make \href links black italic (no color bleeding, no underline)
+\let\originalhref\href
+\renewcommand{\href}[2]{\originalhref{#1}{\textit{\textcolor{black}{#2}}}}
+
+% Make \url links also black italic
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    citecolor = black,
+    urlcolor  = black,
+    pdfborder = {0 0 0}
+}
+\renewcommand{\UrlFont}{\itshape} % Use italic but no color or boldness

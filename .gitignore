@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+flyLatexServer/venv/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+flyLatexServer/output/
+builderrors.txt
+
+# Others
+*.tar.gz
+*.tex.bak
+*.bak
+
+# Ignore all LaTeX build junk
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bcf
+*.run.xml
+*.pdf
+
+# Remove specific junk
+comment.cut
+builderrors.txt
+uploaded.*
+
+# But keep minimal.tex
+!minimal.tex
+
+test.py
+content.tex

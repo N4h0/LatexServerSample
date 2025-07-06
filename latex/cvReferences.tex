@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%
+% This CV example/template is based on my own
+% CV which I (lamely attempted) to clean up, so that
+% it's less of an eyesore and easier for others to use.
+%
+% LianTze Lim (liantze@gmail.com)
+% 23 Oct, 2022
+
+\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+
+% Most commands and style definitions are in settings.sty.
+\usepackage{settings}
+
+\usepackage[most]{tcolorbox}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% Universal font combination that works without extra installations
+\usepackage{newtxtext, newtxmath}  % Professional Times-like font
+\usepackage[scaled=0.95]{helvet}   % Scaled Helvetica for sans-serif
+\renewcommand{\familydefault}{\sfdefault}  % Use sans-serif as default
+
+% Keep all your color definitions unchanged
+\definecolor{darkerGreen}{HTML}{E6F2DA}
+\definecolor{lighterGreen}{HTML}{B3CC80} % A much lighter shade of green
+
+% Keep your greenbox definition unchanged
+\newtcolorbox{greenbox}{
+  colback=lighterGreen!30, % Much less bright green
+  colframe=darkerGreen, % Darker green for the frame
+  boxrule=0.5mm,
+  boxsep=5mm,
+  arc=0mm, % Makes corners square
+  left=10mm, % Extra space on the left side for text
+  right=10mm, % Balance the space on the right side
+  top=0mm, % Top padding
+  bottom=0mm, % Bottom padding
+  width=\textwidth, % Box width set to text width
+  halign=left % Text aligned to the left
+}
+
+% Keep all your other settings unchanged
+\newlength{\entrylabelwidthcustom}
+\setlength{\entrylabelwidthcustom}{3.8cm} % Tweak this if needed
+
+%% Photo is only shown if "fullonly" is included
+\includecomment{fullonly}
+% \excludecomment{fullonly}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header remains unchanged
+\leftheader{%
+  {\LARGE\bfseries\sffamily Johan}\\[8pt]
+
+  \makefield{\faCalendar}{XX/XX/XXXX}
+  \makefield{\faEnvelope[regular]}{\href{mailto:XXXXXXXXXX@gmail.com}{xxxxxxxx@gmail.com}}
+  \makefield{\faPhone}{+47 XXX XX XXX} \\
+
+  \vspace{3pt}  % Bittelitt meir luft
+
+  \makefield{\faLinkedin}{\href{https://www.linkedin.com/in/johan-tryti-a0a5a017a/}{linkedin}}
+  \hspace{14pt}
+  \makefield{\faGithub}{\href{https://github.com/N4h0}{GitHub}}\\[5pt]
+}
+
+\rightheader{~}
+\begin{fullonly}
+\photo[r]{photo.jpg}
+\photoscale{0.13}
+\end{fullonly}
+
+\title{Curriculum Vitae}
+
+\begin{document}
+
+\makeatletter
+\renewcommand{\entry}[2][]{%
+  \par\noindent%
+  \parbox[t]{\linewidth}{%
+    \makebox[\entrylabelwidthcustom][l]{\textbf{#1}}%
+    \parbox[t]{\dimexpr\linewidth-\entrylabelwidthcustom\relax}{%
+      \begingroup
+        \setbox0=\vbox{\hfuzz=10000pt #2}%
+        \unvbox0
+      \endgroup
+    }%
+  }%
+  \par\vspace{4pt}%
+}
+\makeatother
+
+
+
+\makeheaders[c]
+
+\input{content}
+
+
+% If you're not a researcher nor an academic, you probably don't have any publications; delete this line.
+%% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own and use \input NOT \makerubric
+% \input{publications}
+
+%\makerubric{misc}
+
+\pagebreak
+
+\input{referanser.tex}
+
+% \makerubric{referanser}
+% \input{referee-full}
+
+\end{document}
